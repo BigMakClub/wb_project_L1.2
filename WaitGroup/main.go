@@ -17,10 +17,10 @@ func main() {
 
 	for i, value := range array {
 		wg.Add(1)
-		go func(value int) {
+		go func(i, value int) {
 			defer wg.Done()
 			worker(i, value)
-		}(value)
+		}(i, value)
 	}
 
 	wg.Wait()
